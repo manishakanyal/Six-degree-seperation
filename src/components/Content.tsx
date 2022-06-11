@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Alert, Container } from "@mui/material";
+import { Container } from "@mui/material";
 import AddPerson from "./AddPerson";
 import CreateRelation from "./CreateRelation";
 import CalculateSeparation from "./CalculateSeparation";
