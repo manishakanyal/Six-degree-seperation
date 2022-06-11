@@ -14,7 +14,7 @@ import { PersonType } from "./Content";
 type OptionsType = {
   options: PersonType[],
   computeRelation: (person1: string, person2: string) => void,
-  answer: string[][]
+  answer?: string[][]
 }
 
 
@@ -62,16 +62,13 @@ const CalculateSeparation: FC<OptionsType> = ({ options, computeRelation, answer
           </Button>
         </PaddedContainer>
         <PaddedContainer>
-          {/* {answer.length ? <Typography>--Degree of Seperation-- {answer.map((array) => <Typography variant="body1">{array.join("   >   ")} </Typography>)}</Typography>: null}
-         */}
-
           {
-            answer.length ?
+            answer?.length ?
               <Alert icon={false} severity="success">
                 <AlertTitle>Degree of Seperation</AlertTitle>
                 {answer.map((array) => <Typography variant="body1">{array.join("   >   ")} </Typography>)}
               </Alert>
-              : null
+              : answer?.length === 0 ?<Alert severity="error">{`There is no degree of seperation between ${person1} and ${person2}`}</Alert> : null
           }
         </PaddedContainer>
       </ColummCenterFlexBox>

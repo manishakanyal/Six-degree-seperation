@@ -1,8 +1,8 @@
 export class Solution {
 
     graph = new Map();
-    ans:string[][] = [];
-    temp:string[] = [];
+    ans: string[][] = [];
+    temp: string[] = [];
 
     insert(friend1: string, friend2: string) {
 
@@ -26,22 +26,29 @@ export class Solution {
             this.ans = [...this.ans, this.temp]
         }
         else {
-            const ex = this.graph.get(current)
-            for (let curr of ex) {
-                this.findDegreeOfSepration(curr, target);
-            }
 
+            if (this.graph.has(current)) {
+                const ex = this.graph.get(current)
+
+                for (let curr of ex) {
+                    this.findDegreeOfSepration(curr, target);
+                }
+            }
         }
         this.temp = this.temp.slice(0, this.temp.length - 1);
     }
 
-    print() {
+    clearPreviousResults() {
+        this.ans = [];
+    }
 
-        this.ans.forEach((relation) => 
-        {
-           console.log(relation.join(" > "))
-        })
-       
+    print() {
+        if (this.ans.length) {
+            this.ans.forEach((relation) => {
+                console.log(relation.join(" > "))
+            })
+        }
+
     }
 
 }
